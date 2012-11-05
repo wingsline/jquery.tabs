@@ -37,7 +37,7 @@ The following methods will open a tab:
 
 Insert a hidden input element into the HTML:
 
-	<input name="openTab" value="tab1" type="hidden"/>
+	<input name="openTab" value="tab1" type="hidden">
 	
 #### Javascript
 
@@ -47,12 +47,12 @@ Add this after the plugin was initialized:
 		
 If you want to set the hash of the current URL:
 
-	$('.tabs').tabs('open', 'langhu', true);
+	$('.tabs').tabs('open', 'tabname', true);
 	
 #### Open the first or the last tab
 
-$('.tabs').tabs('open', 'first');
-$('.tabs').tabs('open', 'last');
+	$('.tabs').tabs('open', 'first');
+	$('.tabs').tabs('open', 'last');
 
 ## Notes
 
