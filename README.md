@@ -30,6 +30,19 @@ Initialize the plugin:
 When initializing, you can pass options to the plugin:
 
 	$('.tabs').tabs({'option1':'value', 'option2': 'value'});
+	
+You can also add a hashchange event to the window, to change the tabs when the
+hash changes:
+
+	$(window).bind('hashchange', function (){
+		var hash = window.location.hash;
+		if(hash){
+			$('.tabs').tabs('open', hash.substr(1));
+		}
+		else{
+			$('.tabs').tabs('open', 'first');
+		}
+	});
 
 The following methods will open a tab:
 
@@ -56,5 +69,4 @@ If you want to set the hash of the current URL:
 
 ## Notes
 
-* passing an invalid tabname will close all tabs
 * the tab content must be inserted after the tab handlers sure in your style sheet you hide the li elemenets and show the li.active ones

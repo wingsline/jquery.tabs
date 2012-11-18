@@ -1,5 +1,5 @@
 /**
- * tabs plugin v0.1
+ * tabs plugin v0.1.1
  * http://wingsline.com
  *
  * Copyright 2012 Arpad Olasz
@@ -64,7 +64,6 @@
  * Notes:
  * --------------------------------------------------------------
  *
- *	- passing an invalid tabname will close all tabs
  *	- the tab content must be inserted after the tab handlers
  *	- the plugin adds the class "active" to the li elements, so make
  *	sure in your style sheet you hide the li elemenets
@@ -209,6 +208,9 @@
 						data = $this.data(__NS__),
 						container = $this.next(data.tabContent);
 					
+					// if the requested hash is not in the validIds we don't do nothing
+					if($.inArray(hash, data.validIds) < 0) return;
+
 					// if hash == first, we open the 1st tab
 					if(hash === 'first')
 					{
