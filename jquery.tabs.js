@@ -209,7 +209,9 @@
 						container = $this.next(data.tabContent);
 					
 					// if the requested hash is not in the validIds we don't do nothing
-					if($.inArray(hash, data.validIds) < 0) return;
+					if($.inArray(hash, data.validIds) < 0) {
+						return;
+					}
 
 					// if hash == first, we open the 1st tab
 					if(hash === 'first')
@@ -238,7 +240,7 @@
 								if(aHash)
 								{
 									// if the hash of the a elmenet matches, we make this active
-									if(aHash == hash)
+									if(aHash === hash)
 									{
 										$(this).addClass(data.activeClass);
 										// update the hash only if we have hash
