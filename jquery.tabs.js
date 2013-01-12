@@ -161,7 +161,7 @@
 						data = $this.data(__NS__);
 
 					data.validIds = [];
-					$('li > a', $this).each(function(i)
+					$('li > a', $this).each(function()
 					{
 						var aHash = this.hash.substr(1);
 						if(aHash)
