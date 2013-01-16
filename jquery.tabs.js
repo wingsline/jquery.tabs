@@ -131,7 +131,9 @@
 						}
 
 						// add the events to the li > a elements
-						$('li > a', $this).live('click.' + __NS__, function(e)
+						/* jQuery 9 compatibility */
+						$(this).on('click.' + __NS__, 'li > a', function(e)
+						// $('li > a', $this).live('click.' + __NS__, function(e)
 						{
 							// update the valid tabs
 							methods.update.apply($this);
@@ -186,7 +188,9 @@
 						data = $this.data(__NS__);
 
 					$(window).unbind('.'+__NS__);
-					$('li > a').die('.'+__NS__);
+					/* jQuery 1.9 compatibility */
+					$(document).off('.'+__NS__, 'li > a');
+					// $('li > a').die('.'+__NS__);
 					data[__NS__].remove();
 					$this.removeData(__NS__);
 
