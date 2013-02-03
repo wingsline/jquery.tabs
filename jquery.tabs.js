@@ -1,5 +1,5 @@
 /**
- * tabs plugin v0.1.1
+ * tabs plugin v0.1.5
  * http://wingsline.com
  *
  * Copyright 2012 Arpad Olasz
@@ -9,14 +9,14 @@
  * USAGE AND REQUIREMENTS
  * --------------------------------------------------------------
  *
- * Requirements: jQuery with live event support
+ * Requirements: jQuery 1.9+
  *
  *
  * Required CSS:
  * --------------------------------------------------------------
  *
- * .tabs-content li {display:none}
- * .tabs-content li.active {display:block}
+ * .tabs--content li {display:none}
+ * .tabs--content li.active {display:block}
  *
  * Required HTML:
  * --------------------------------------------------------------
@@ -26,7 +26,7 @@
  *		<li><a href="#tab2">Tab 2</a></li>
  *		<li><a href="#tab3">Tab 3</a></li>
  *	</ol>
- *	<ul class="tabs-content">
+ *	<ul class="tabs--content">
  *		<li id="tab1">Content 1</li>
  *		<li id="tab2">Content 2</li>
  *		<li id="tab3">Content 3</li>
@@ -72,6 +72,7 @@
  */
 
 (function( $ ){
+	'use strict';
 		// namespace for events and data
 		// use it like 'click.' + __NS__ for the event
 		// and data(__NS__) for data
@@ -96,7 +97,7 @@
 						// default options
 						data = $.extend( {
 							// the class for the tabbed content container
-							'tabContent' : '.tabs-content',
+							'tabContent' : '.tabs--content',
 							// content element in the container will have this class when open
 							'activeClass': 'active',
 							// if a hidden element is present in the page we attempt to open that tab
@@ -275,8 +276,6 @@
 			} // end open ()
 
 		}; // end methods
-
-
 
 		$.fn.tabs = function( method ) {
     

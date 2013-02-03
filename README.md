@@ -1,12 +1,12 @@
 # A simple jquery tabs plugin 
 
 
-**Requirements:** jQuery with live event support
+**Requirements:** jQuery 1.9+
 
 ## Required CSS:
 
-	.tabs-content li {display:none}
- 	.tabs-content li.active {display:block}
+	.tabs--content li {display:none}
+ 	.tabs--content li.active {display:block}
  	
  ## Required HTML:
  
@@ -15,7 +15,7 @@
 		<li><a href="#tab2">Tab 2</a></li>
 		<li><a href="#tab3">Tab 3</a></li>
 	</ol>
-	<ul class="tabs-content">
+	<ul class="tabs--content">
  		<li id="tab1">Content 1</li>
  		<li id="tab2">Content 2</li>
  		<li id="tab3">Content 3</li>
