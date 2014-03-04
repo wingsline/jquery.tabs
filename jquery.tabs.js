@@ -88,10 +88,10 @@
 			init : function( options ) {
 
 				return this.each(function(){
-         
+
 					var $this = $(this),
 						data = $this.data(__NS__);
-         
+
 					// If the plugin hasn't been initialized yet
 					if ( ! data ) {
 						// default options
@@ -103,7 +103,7 @@
 							// if a hidden element is present in the page we attempt to open that tab
 							'hiddenInputName': 'openTab'
 						}, options);
-							
+
 						$(this).data(__NS__, data);
 
 						// update the validIds for the tabs
@@ -128,7 +128,7 @@
 							{
 								methods.open.apply($this, [hash]);
 							}
-							
+
 						}
 
 						// add the events to the li > a elements
@@ -150,7 +150,7 @@
 					}
 				});
 			}, // end init()
-			
+
 
 			/**
 			 * This function essentially updates the tab id's in case new tabs are added
@@ -172,7 +172,7 @@
 							data.validIds.push(aHash);
 						}
 					});
-					
+
 				});
 			},
 
@@ -198,7 +198,7 @@
 				});
 
 			}, // end destroy()
-		
+
 
 			/**
 			 * Opens a tab, closing the others
@@ -212,15 +212,16 @@
 					var $this = $(this),
 						data = $this.data(__NS__),
 						container = $this.next(data.tabContent);
-					
+
 					// if the requested hash is not in the validIds we don't do nothing
-					if($.inArray(hash, data.validIds) < 0) {
+					if($.inArray(hash, data.validIds) < 0 && hash !== 'first' && hash !== 'last') {
 						return;
 					}
 
 					// if hash == first, we open the 1st tab
 					if(hash === 'first')
 					{
+
 						hash = data.validIds[0];
 					}
 					// if hash == last, we open the last tab
@@ -239,9 +240,9 @@
 
 							if(a.length)
 							{
-								
+
 								var aHash = a.get(0).hash.substr(1);
-								
+
 								if(aHash)
 								{
 									// if the hash of the a elmenet matches, we make this active
@@ -253,7 +254,7 @@
 										{
 											window.location.hash = '#' + aHash;
 										}
-										
+
 									}
 									// otherwise we remove the active class from the li
 									else
@@ -261,10 +262,10 @@
 										$(this).removeClass(data.activeClass);
 									}
 								}
-								
+
 							}
 						});
-						
+
 
 						// show the tab content
 						$('#' + hash, container).addClass(data.activeClass);
@@ -278,7 +279,7 @@
 		}; // end methods
 
 		$.fn.tabs = function( method ) {
-    
+
 			if ( methods[method] ) {
 				return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
 			} else if ( typeof method === 'object' || ! method ) {
@@ -286,7 +287,7 @@
 			} else {
 				$.error( 'Method ' +  method + ' does not exist on jQuery.tabs' );
 			}
-  
+
 		}; // end plugin
 
 })( jQuery );
