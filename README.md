@@ -76,4 +76,5 @@ If you want to set the hash of the current URL:
 
 ## Notes
 
-* the tab content must be inserted after the tab handlers sure in your style sheet you hide the li elemenets and show the li.active ones
+* the tab content must be inserted after the tab handlers
+* make sure in your style sheet you hide the li elemenets and show the li.active ones
