@@ -1,5 +1,5 @@
 /**
- * tabs plugin v0.1.5
+ * tabs plugin v0.1.5.1
  * http://wingsline.com
  *
  * Copyright 2012 Arpad Olasz
