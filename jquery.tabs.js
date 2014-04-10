@@ -1,5 +1,5 @@
 /**
- * tabs plugin v0.1.5.2
+ * tabs plugin v0.1.5.3
  * http://wingsline.com
  *
  * Copyright 2012 Arpad Olasz
@@ -101,7 +101,9 @@
                             // content element in the container will have this class when open
                             'activeClass': 'active',
                             // if a hidden element is present in the page we attempt to open that tab
-                            'hiddenInputName': 'openTab'
+                            'hiddenInputName': 'openTab',
+                            // update the browser hash
+                            'updateHash' : false
                         }, options);
 
                         $(this).data(__NS__, data);
@@ -144,12 +146,15 @@
                             methods.update.apply($this);
 
                             var aHash = this.hash.substr(1);
-                            if(aHash)
-                            {
+                            if(aHash) {
                                 e.preventDefault();
-                                window.location.hash = '#' + aHash;
+                                if (data.updateHash) {
+                                    window.location.hash = '#' + aHash;
+                                }
                                 methods.open.apply($this, [aHash, e]);
+
                             }
+
                         });
                     }
                 });
@@ -254,7 +259,7 @@
                                     {
                                         $(this).addClass(data.activeClass);
                                         // update the hash only if we have hash
-                                        if(undefined !== e && window.location.hash)
+                                        if(undefined !== e && window.location.hash && data.updateHash)
                                         {
                                             window.location.hash = '#' + aHash;
                                         }
