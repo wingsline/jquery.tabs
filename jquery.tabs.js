@@ -1,5 +1,5 @@
 /**
- * tabs plugin v0.1.5.3
+ * tabs plugin v0.1.6
  * http://wingsline.com
  *
  * Copyright 2012 Arpad Olasz
@@ -10,6 +10,7 @@
  * --------------------------------------------------------------
  *
  * Requirements: jQuery 1.9+
+ * Optional: https://github.com/jjenzz/jQuery.nearest
  *
  *
  * Required CSS:
@@ -98,6 +99,8 @@
                         data = $.extend( {
                             // the class for the tabbed content container
                             'tabContent' : '.tabs--content',
+                            // tab element will have this class when active
+                            'activeTabClass' : 'active',
                             // content element in the container will have this class when open
                             'activeClass': 'active',
                             // if a hidden element is present in the page we attempt to open that tab
@@ -146,6 +149,7 @@
                             methods.update.apply($this);
 
                             var aHash = this.hash.substr(1);
+
                             if(aHash) {
                                 e.preventDefault();
                                 if (data.updateHash) {
@@ -220,7 +224,7 @@
 
                     var $this = $(this),
                         data = $this.data(__NS__),
-                        container = $this.next(data.tabContent);
+                        container = jQuery().nearest ? $this.nearest(data.tabContent) : $this.next(data.tabContent);
 
                     // if the requested hash is not in the validIds we don't do nothing
                     if($.inArray(hash, data.validIds) < 0 && hash !== 'first' && hash !== 'last') {
@@ -239,7 +243,6 @@
                         hash = data.validIds[data.validIds.length - 1];
                     }
 
-
                     if(container.length)
                     {
                         // make the tab active
@@ -257,7 +260,7 @@
                                     // if the hash of the a elmenet matches, we make this active
                                     if(aHash === hash)
                                     {
-                                        $(this).addClass(data.activeClass);
+                                        $(this).addClass(data.activeTabClass);
                                         // update the hash only if we have hash
                                         if(undefined !== e && window.location.hash && data.updateHash)
                                         {
@@ -268,7 +271,7 @@
                                     // otherwise we remove the active class from the li
                                     else
                                     {
-                                        $(this).removeClass(data.activeClass);
+                                        $(this).removeClass(data.activeTabClass);
                                     }
                                 }
 
