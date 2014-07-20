@@ -1,5 +1,5 @@
 /**
- * tabs plugin v0.1.6
+ * tabs plugin v0.1.6.1
  * http://wingsline.com
  *
  * Copyright 2012 Arpad Olasz
@@ -107,6 +107,7 @@
                             'hiddenInputName': 'openTab',
                             // update the browser hash
                             'updateHash' : false
+
                         }, options);
 
                         $(this).data(__NS__, data);
@@ -280,7 +281,13 @@
 
 
                         // show the tab content
-                        $('#' + hash, container).addClass(data.activeClass);
+                        var content = $('#' + hash, container).addClass(data.activeClass);
+
+                        // trigger the onTabOpen event
+                        setTimeout(function () {
+                            content.trigger('onTabOpen', [$this[0], hash]);
+                        });
+
                         // hide other tab content
                         container.children().not($('#'+hash)).removeClass(data.activeClass);
                     }
